@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
 module WebLogParser
-  class Parser
-    attr_accessor :path
-
+  class WebLogParser
     def initialize(file_path)
-      @path = file_path.strip
-      raise ArgumentError, 'No file path is provided' if path.empty?
+      content = WebLogFile.new(file_path).content_by_lines
+      views = PageViews.call(content)
+      puts views
     end
 
-    def call
 
-    end
   end
 end

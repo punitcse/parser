@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'set'
 module WebLogParser
   class PageViews
     # @param [Array] content_by_lines

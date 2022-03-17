@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rspec'
 require 'spec_helper'
 
@@ -7,21 +9,21 @@ describe WebLogParser::WebLogFile do
   context 'file path is empty' do
     let(:file_path) { ' ' }
     it 'raise an error when an empty string passed' do
-      expect { subject }.to raise_exception(WebLogParser::WebLogFile::FileNotFound)
+      expect { subject }.to raise_exception(WebLogParser::FileNotFound)
     end
   end
 
   context 'file path is incorrect' do
     let(:file_path) { 'some_path/does_not_exist.log' }
     it 'raise file not found error' do
-      expect { subject }.to raise_error(WebLogParser::WebLogFile::FileNotFound)
+      expect { subject }.to raise_error(WebLogParser::FileNotFound)
     end
   end
 
   context 'file format is incorrect' do
     let(:file_path) { "#{RSPEC_ROOT}/fixtures/not_an_exe.exe" }
     it 'raise file format invalid error' do
-      expect { subject }.to raise_error(WebLogParser::WebLogFile::FileFormatIsInvalid)
+      expect { subject }.to raise_error(WebLogParser::FileFormatIsInvalid)
     end
   end
 
